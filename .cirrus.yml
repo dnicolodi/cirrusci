@@ -9,13 +9,13 @@ test_task:
   #   folder: ~/.cache/pip
   #   fingerprint_script: echo $PYTHON_VERSION
   #   populate_script: pip install -r requirements.txt
-  script:
+  install_python_script:
     - brew install python@3.10
   env:
     PATH: /usr/local/opt/python@3.10/libexec/bin/:${PATH}
-  script: echo $PATH
-  script: ls -la /usr/local/opt/python@3.10/libexec/bin/
-  script:
+  test_script:
+    - echo $PATH
+    - ls -la /usr/local/opt/python@3.10/libexec/bin/
     - python -c 'print("Hello World!")'
     - python -c 'import sysconfig; print(sysconfig.get_platform())'
     - python -m pip install siphash24
