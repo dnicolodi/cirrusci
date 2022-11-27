@@ -1,6 +1,3 @@
-# container:
-#   image: python:slim
-
 macos_arm64_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-monterey-xcode:14
@@ -9,15 +6,16 @@ macos_arm64_task:
   env:
     PATH: /opt/homebrew/opt/python@3.10/libexec/bin/:${PATH}
   test_script:
-    - python -c 'print("Hello World!")'
-    - python -c 'import sysconfig; print(sysconfig.get_platform())'
-    - python -m pip install siphash24
-    - python -c 'import siphash24; print(siphash24.siphash24(b"").hexdigest())'
-
+    - git clone https://github.com/dnicolodi/python-siphash24.git
+    - cd python-siphash24
+    - python3 -m pip install .
+    - python3 test.py
 
 debian_unstable_task:
   container:
     dockerfile: ci/debian-unstable.docker
   test_script:
-    - python3 -m pip install siphash24
-    - python3 -c 'import siphash24; print(siphash24.siphash24(b"").hexdigest())'
+    - git clone https://github.com/dnicolodi/python-siphash24.git
+    - cd python-siphash24
+    - python3 -m pip install .
+    - python3 test.py
