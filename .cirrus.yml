@@ -1,0 +1,9 @@
+container:
+  image: python:slim
+
+test_task:
+  # pip_cache:
+  #   folder: ~/.cache/pip
+  #   fingerprint_script: echo $PYTHON_VERSION
+  #   populate_script: pip install -r requirements.txt
+  script: python -c 'print("Hello World!")'
