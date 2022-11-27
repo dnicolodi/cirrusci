@@ -5,24 +5,24 @@ test_template: &test
     - python3 -m pip install .
     - python3 test.py
 
-macos_arm64_task:
+macos-arm64_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-monterey-xcode:14
-  install_python_script:
+  install_script:
     - brew install python@3.10
     - echo "PATH=/opt/homebrew/opt/python@3.10/libexec/bin/:$PATH" >> $CIRRUS_ENV
-  fix_pip_script:
+  fix-pip_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@main
   << : *test
 
-debian_unstable_task:
+debian-unstable_task:
   container:
     dockerfile: ci/debian-unstable.docker
-  fix_pip_script:
+  fix-pip_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
   << : *test
 
-fedora_37_task:
+fedora-37_task:
   container:
     dockerfile: ci/fedora-37.docker
   << : *test
