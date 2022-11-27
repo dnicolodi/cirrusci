@@ -6,6 +6,7 @@ macos_arm64_task:
   env:
     PATH: /opt/homebrew/opt/python@3.10/libexec/bin/:${PATH}
   test_script:
+    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@main
     - git clone https://github.com/dnicolodi/python-siphash24.git
     - cd python-siphash24
     - python3 -m pip install .
@@ -15,6 +16,17 @@ debian_unstable_task:
   container:
     dockerfile: ci/debian-unstable.docker
   test_script:
+    - git clone https://github.com/dnicolodi/python-siphash24.git
+    - cd python-siphash24
+    - python3 -m pip install .
+    - python3 test.py
+
+
+debian_unstable_fix_task:
+  container:
+    dockerfile: ci/debian-unstable.docker
+  test_script:
+    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
     - git clone https://github.com/dnicolodi/python-siphash24.git
     - cd python-siphash24
     - python3 -m pip install .
