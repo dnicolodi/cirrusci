@@ -17,4 +17,4 @@ test_task:
     - python -c 'print("Hello World!")'
     - python -c 'import sysconfig; print(sysconfig.get_platform())'
     - python -m pip install siphash24
-    - python -c 'import siphash24; print(siphash24.siphash24(b'').hexdigest())'
+    - python -c 'import siphash24; print(siphash24.siphash24(b"").hexdigest())'
