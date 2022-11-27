@@ -1,0 +1,5 @@
+FROM fedora:37
+RUN set -eux; \
+  dnf update; \
+  dnf install python3-pip ninja-build git;
+CMD ["bash"]
