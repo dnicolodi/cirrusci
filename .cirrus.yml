@@ -1,3 +1,10 @@
+test_template: &test
+  test_script:
+    - git clone https://github.com/dnicolodi/python-siphash24.git
+    - cd python-siphash24
+    - python3 -m pip install .
+    - python3 test.py
+
 macos_arm64_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-monterey-xcode:14
@@ -7,28 +14,16 @@ macos_arm64_task:
     PATH: /opt/homebrew/opt/python@3.10/libexec/bin/:${PATH}
   fix_pip_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@main
-  test_script:
-    - git clone https://github.com/dnicolodi/python-siphash24.git
-    - cd python-siphash24
-    - python3 -m pip install .
-    - python3 test.py
+  << : *test
 
 debian_unstable_task:
   container:
     dockerfile: ci/debian-unstable.docker
   fix_pip_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
-  test_script:
-    - git clone https://github.com/dnicolodi/python-siphash24.git
-    - cd python-siphash24
-    - python3 -m pip install .
-    - python3 test.py
+  << : *test
 
 fedora_37_task:
   container:
     dockerfile: ci/fedora-37.docker
-  test_script:
-    - git clone https://github.com/dnicolodi/python-siphash24.git
-    - cd python-siphash24
-    - python3 -m pip install -vvv .
-    - python3 test.py
+  << : *test
