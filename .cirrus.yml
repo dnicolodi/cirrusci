@@ -30,5 +30,5 @@ fedora_37_task:
   test_script:
     - git clone https://github.com/dnicolodi/python-siphash24.git
     - cd python-siphash24
-    - python3 -m pip install .
+    - python3 -m pip install -vvv .
     - python3 test.py
