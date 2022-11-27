@@ -16,16 +16,6 @@ macos_arm64_task:
 debian_unstable_task:
   container:
     dockerfile: ci/debian-unstable.docker
-  test_script:
-    - git clone https://github.com/dnicolodi/python-siphash24.git
-    - cd python-siphash24
-    - python3 -m pip install .
-    - python3 test.py
-
-
-debian_unstable_fix_task:
-  container:
-    dockerfile: ci/debian-unstable.docker
   fix_pip_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
   test_script:
@@ -33,7 +23,6 @@ debian_unstable_fix_task:
     - cd python-siphash24
     - python3 -m pip install .
     - python3 test.py
-
 
 fedora_37_task:
   container:
