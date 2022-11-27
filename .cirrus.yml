@@ -10,8 +10,7 @@ macos_arm64_task:
     image: ghcr.io/cirruslabs/macos-monterey-xcode:14
   install_python_script:
     - brew install python@3.10
-  env:
-    PATH: /opt/homebrew/opt/python@3.10/libexec/bin/:${PATH}
+    - echo "PATH=/opt/homebrew/opt/python@3.10/libexec/bin/:$PATH" >> $CIRRUS_ENV
   fix_pip_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@main
   << : *test
