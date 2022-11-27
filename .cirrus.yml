@@ -20,4 +20,4 @@ debian_unstable_task:
     dockerfile: ci/debian-unstable.docker
   test_script:
     - python3 -m pip install siphash24
-    - python -c 'import siphash24; print(siphash24.siphash24(b"").hexdigest())'
+    - python3 -c 'import siphash24; print(siphash24.siphash24(b"").hexdigest())'
