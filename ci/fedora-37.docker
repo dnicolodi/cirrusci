@@ -1,6 +1,6 @@
 FROM fedora:37
 RUN set -eux; \
   dnf -y update; \
-  dnf -y install python3-pip gcc ninja-build git; \
+  dnf -y install python3-devel python3-pip gcc ninja-build git; \
   dnf clean all
 CMD ["bash"]
