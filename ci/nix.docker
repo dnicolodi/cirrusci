@@ -1,0 +1,5 @@
+FROM nixos/nix
+RUN set -eux; \
+  nix-channel --update; \
+  nix-env -iA nixpkgs.python3 nixpkgs.gcc
+CMD ["bash"]

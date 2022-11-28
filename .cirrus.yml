@@ -26,3 +26,8 @@ fedora-37_task:
   container:
     dockerfile: ci/fedora-37.docker
   << : *test
+
+nixos_task:
+  container:
+    dockerfile: ci/nix.docker
+  << : *test
