@@ -31,3 +31,8 @@ nixos_task:
   container:
     dockerfile: ci/nix.docker
   << : *test
+
+archlinux_task:
+  container:
+    dockerfile: ci/archlinux.docker
+  << : *test

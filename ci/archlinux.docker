@@ -1,0 +1,5 @@
+FROM archlinux:latest
+RUN set -eux; \
+  pacman -Sy; \
+  pacman -S --noconfirm python python-pip gcc ninja git
+CMD ["bash"]
