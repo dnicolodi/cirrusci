@@ -48,3 +48,9 @@ manylinux_task:
   env:
     PATH: "/opt/python/${py}/bin/:${PATH}"
   << : *test
+
+miniconda_task:
+  container:
+    dockerfile: ci/miniconda.docker
+    cpu: 1
+  << : *test
