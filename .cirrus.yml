@@ -19,6 +19,7 @@ macos-arm64_task:
 debian-unstable_task:
   container:
     dockerfile: ci/debian-unstable.docker
+    cpu: 1
   fix-pip_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
   << : *test
@@ -26,16 +27,19 @@ debian-unstable_task:
 fedora-37_task:
   container:
     dockerfile: ci/fedora-37.docker
+    cpu: 1
   << : *test
 
 archlinux_task:
   container:
     dockerfile: ci/archlinux.docker
+    cpu: 1
   << : *test
 
 manylinux_task:
   container:
     dockerfile: ci/manylinux.docker
+    cpu: 1
   matrix:
     - env:
         py: "cp37-cp37m"
