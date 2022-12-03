@@ -27,12 +27,14 @@ fedora-37_task:
     dockerfile: ci/fedora-37.docker
   << : *test
 
-nixos_task:
-  container:
-    dockerfile: ci/nix.docker
-  << : *test
-
 archlinux_task:
   container:
     dockerfile: ci/archlinux.docker
+  << : *test
+
+manylinux_task:
+  container:
+    dockerfile: ci/manylinux.docker
+  env:
+    PATH: /opt/python/cp37-cp37m/bin/:${PATH}
   << : *test
