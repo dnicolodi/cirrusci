@@ -35,6 +35,9 @@ archlinux_task:
 manylinux_task:
   container:
     dockerfile: ci/manylinux.docker
-  env:
-    PATH: /opt/python/cp37-cp37m/bin/:${PATH}
+  matrix:
+    - env:
+        PATH: /opt/python/cp37-cp37m/bin/:${PATH}
+    - env:
+        PATH: /opt/python/cp311-cp311/bin/:${PATH}
   << : *test
