@@ -1,0 +1,5 @@
+FROM debian:bullseye
+RUN set -eux; \
+  apt-get update; \
+  apt-get install -y python3-pip ninja-build git;
+CMD ["bash"]

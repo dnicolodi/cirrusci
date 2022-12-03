@@ -16,6 +16,14 @@ macos-arm64_task:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@main
   << : *test
 
+debian-11_task:
+  container:
+    dockerfile: ci/debian-11.docker
+    cpu: 1
+  fix-pip_script:
+    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
+  << : *test
+
 debian-unstable_task:
   container:
     dockerfile: ci/debian-unstable.docker
