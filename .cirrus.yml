@@ -12,6 +12,14 @@ macos_task:
     # - bin/python -m pip install .
     - python3 -m pip install --upgrade -vv git+https://github.com/pypa/pip.git@refs/pull/11740/head
 
+macos_warnings_task:
+  macos_instance:
+    image: ghcr.io/cirruslabs/macos-ventura-xcode:14
+  test_script:
+    - python3 -m pip install --upgrade -vv git+https://github.com/pypa/pip.git@refs/pull/11741/head
+    - python3 -m pip --version
+    - python3 -m pip install --upgrade -vv git+https://github.com/pypa/pip.git@refs/pull/11741/head
+
 debian_task:
   container:
     dockerfile: ci/debian-unstable.docker
