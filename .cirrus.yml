@@ -21,8 +21,6 @@ macos_warnings_task:
     - python3 -m pip --version
     - sudo python3 -m pip install -vvv --upgrade git+https://github.com/pypa/pip.git
     - python3 -m pip --version    
-    - sudo python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11741/head
-    - python3 -m pip --version
 
 debian_task:
   container:
