@@ -16,13 +16,10 @@ macos_warnings_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-ventura-xcode:14
   test_script:
-    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git
+    - sudo python3 -m pip install --upgrade git+https://github.com/pypa/pip.git
     - python3 -m pip --version
-    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git
+    - sudo python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11741/head
     - python3 -m pip --version
-    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11741/head
-    - python3 -m pip --version
-    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git
 
 debian_task:
   container:
