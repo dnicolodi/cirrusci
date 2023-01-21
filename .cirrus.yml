@@ -1,67 +1,21 @@
-test_template: &test
-  test_script:
-    - python3 --version
-    - git clone https://github.com/dnicolodi/python-siphash24.git
-    - cd python-siphash24
-    - python3 -m pip install .
-    - python3 test.py
-
-macos-arm64_task:
+macos_task:
   macos_instance:
-    image: ghcr.io/cirruslabs/macos-monterey-xcode:14
-  install_script:
-    - brew install python@3.10
-    - echo "PATH=/opt/homebrew/opt/python@3.10/libexec/bin/:$PATH" >> $CIRRUS_ENV
-  fix-pip_script:
-    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@main
-  << : *test
+    image: ghcr.io/cirruslabs/macos-ventura-xcode:14
+  test_script:
+    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11740/head
+    - git clone https://github.com/dnicolodi/python-siphash24.git
+    - pushd python-siphash24
+    - python3 -m pip install .
+    - python3 -m venv .
+    - bin/python -m pip install .
 
-debian-11_task:
-  container:
-    dockerfile: ci/debian-11.docker
-    cpu: 1
-  fix-pip_script:
-    - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
-  << : *test
-
-debian-unstable_task:
+debian_task:
   container:
     dockerfile: ci/debian-unstable.docker
-    cpu: 1
-  fix-pip_script:
+  test_script:
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11623/head
-  << : *test
-
-fedora-37_task:
-  container:
-    dockerfile: ci/fedora-37.docker
-    cpu: 1
-  << : *test
-
-archlinux_task:
-  container:
-    dockerfile: ci/archlinux.docker
-    cpu: 1
-  << : *test
-
-manylinux-python3.11_task:
-  container:
-    dockerfile: ci/manylinux.docker
-    cpu: 1
-  env:
-    PATH: "/opt/python/cp311-cp311/bin/:${PATH}"
-  << : *test
-
-manylinux-python3.7_task:
-  container:
-    dockerfile: ci/manylinux.docker
-    cpu: 1
-  env:
-    PATH: "/opt/python/cp37-cp37m/bin/:${PATH}"
-  << : *test
-
-miniconda_task:
-  container:
-    dockerfile: ci/miniconda.docker
-    cpu: 1
-  << : *test
+    - git clone https://github.com/dnicolodi/python-siphash24.git
+    - pushd python-siphash24
+    - python3 -m pip install .
+    - python3 -m venv .
+    - bin/python -m pip install .

@@ -1,5 +1,5 @@
 FROM debian:unstable
 RUN set -eux; \
   apt-get update; \
-  apt-get install -y python3-pip ninja-build git
+  apt-get install -y python3-pip python3-venv ninja-build git
 CMD ["bash"]
