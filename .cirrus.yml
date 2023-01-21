@@ -16,6 +16,7 @@ macos_warnings_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-ventura-xcode:14
   test_script:
+    - python3 -m pip --version
     - sudo python3 -m pip install --upgrade git+https://github.com/pypa/pip.git
     - python3 -m pip --version
     - sudo python3 -m pip install --upgrade git+https://github.com/pypa/pip.git
