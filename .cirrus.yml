@@ -2,6 +2,7 @@ macos_task:
   macos_instance:
     image: ghcr.io/cirruslabs/macos-ventura-xcode:14
   test_script:
+    - find /Applications/Xcode.app/Contents/Developer/Library/Frameworks/Python3.framework/Versions/3.9/ || true
     - python3 -m pip install --upgrade git+https://github.com/pypa/pip.git@refs/pull/11740/head
     - python3 -m pip --version
     - git clone https://github.com/dnicolodi/python-siphash24.git
